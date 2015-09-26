@@ -1,0 +1,1 @@
+Nodemon only watch server

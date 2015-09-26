@@ -7,7 +7,7 @@ import path from 'path';
 const productionConfig = {
   devtool: 'source-map',
 
-  entry: path.join(__dirname, 'client/app/index.jsx'),
+  entry: path.join(__dirname, 'client/app/index.js'),
 
   module: {
     loaders: [{
@@ -31,15 +31,15 @@ const developmentConfig = {
   entry: [
     // Hot reload
     'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    'webpack/hot/dev-server',
 
     // App entry
-    path.join(__dirname, 'client/app/index.jsx')
+    path.join(__dirname, 'client/app/index.js')
   ],
 
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel'
     }]
