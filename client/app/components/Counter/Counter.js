@@ -1,7 +1,6 @@
 'use strict';
 
 import React, { PropTypes } from 'react/addons';
-import './Counter.css';
 
 const Counter = React.createClass({
   mixin: [React.addons.PureRenderMixin],
@@ -39,11 +38,13 @@ const Counter = React.createClass({
   }
 });
 
-Counter.propTypes = {
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  counter: PropTypes.number.isRequired
-};
+if (process.env.NODE_ENV !== 'test') {
+  Counter.propTypes = {
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired
+  };
+}
 
 export default Counter;
 

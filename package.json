@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=development node ./node_modules/nodemon/bin/nodemon.js --watch server index.js",
     "start": "NODE_ENV=production node index.js",
-    "test:client": "./node_modules/mocha/bin/mocha --compilers js:babel/register --require ./client/test-helper.js ./client/**/*.spec.js",
-    "test:server": "./node_modules/mocha/bin/mocha --compilers js:babel/register ./server/**/*.spec.js"
+    "test:client": "NODE_ENV=test ./node_modules/mocha/bin/mocha --compilers js:babel/register --require ./client/test-helper.js ./client/**/*.spec.js",
+    "test:server": "NODE_ENV=test ./node_modules/mocha/bin/mocha --compilers js:babel/register ./server/**/*.spec.js"
   },
   "author": "",
   "license": "ISC",

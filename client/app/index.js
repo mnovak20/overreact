@@ -4,7 +4,10 @@ import React from 'react';
 import App from './components/App';
 import { Provider } from 'react-redux';
 import makeStore from './store/store';
-import '../assets/style.css';
+
+if (process.env.NODE_ENV !== 'test') {
+  import '../assets/style.css';
+}
 
 const store = makeStore();
 
