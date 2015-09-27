@@ -2,9 +2,9 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Counter from './Counter';
-import * as CounterActions from '../actions';
-import { increment, decrement } from '../actions';
+import Counter from './Counter/Counter';
+import * as CounterActions from '../actions/counter/counter';
+import { increment, decrement } from '../actions/counter/counter';
 
 function mapStateToProps(state) {
   return {
@@ -23,10 +23,11 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-// equivalent above
-//function mapDispatchToProps(dispatch) {
-//  console.log(bindActionCreators(CounterActions, dispatch));
-//  return bindActionCreators(CounterActions, dispatch);
-//}
+/**
+ * Equivalent to above
+ * function mapDispatchToProps(dispatch) {;
+ *  return bindActionCreators(CounterActions, dispatch);
+ * }
+ */
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

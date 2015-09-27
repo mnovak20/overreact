@@ -1,26 +1,25 @@
 'use strict';
 
 import { expect } from 'chai';
-
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions';
+import { INCREMENT, DECREMENT } from '../../constants/counter';
 import counter from './counter';
 
-describe('Counter', () => {
-  it('should increment', () => {
+describe('Counter Reducer', () => {
+  it('should increment a state', () => {
     const state = 0;
 
     const nextState = counter(state, {
-      type: INCREMENT_COUNTER
+      type: INCREMENT
     });
 
     expect(nextState).to.equal(1);
   });
 
-  it('should decrement', () => {
+  it('should decrement a state', () => {
     const state = 0;
 
     const nextState = counter(state, {
-      type: DECREMENT_COUNTER
+      type: DECREMENT
     });
 
     expect(nextState).to.equal(-1);

@@ -1,14 +1,14 @@
 'use strict';
 
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions';
+import { INCREMENT, DECREMENT } from '../../constants/counter';
 
 const initialState = 0;
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
-    case INCREMENT_COUNTER:
+    case INCREMENT:
       return state + 1;
-    case DECREMENT_COUNTER:
+    case DECREMENT:
       return state - 1;
     default:
       return state;

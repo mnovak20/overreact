@@ -2,14 +2,16 @@
 
 import { expect } from 'chai';
 import makeStore from './store';
-import { increment, decrement } from '../actions';
+import { increment, decrement } from '../actions/counter/counter';
 
 describe('Store', () => {
   it('should start with an initial state', () => {
     const store = makeStore();
     const state = store.getState();
 
-    expect(state.counter).to.equal(0);
+    expect(state).to.eql({
+      counter: 0
+    });
   });
 
   it('should increment', () => {
@@ -20,7 +22,9 @@ describe('Store', () => {
 
     const nextState = store.getState();
 
-    expect(nextState.counter).to.equal(1);
+    expect(nextState).to.eql({
+      counter: 1
+    });
   });
 
   it('should decrement', () => {
@@ -31,6 +35,8 @@ describe('Store', () => {
 
     const nextState = store.getState();
 
-    expect(nextState.counter).to.equal(-1);
+    expect(nextState).to.eql({
+      counter: -1
+    });
   });
 });

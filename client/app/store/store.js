@@ -1,8 +1,8 @@
 'use strict';
 
 import { createStore } from 'redux';
-import reducer from '../reducers';
+import reducers from '../reducers';
 
 export default function makeStore() {
-  return createStore(reducer);
+  return createStore(reducers);
 };
