@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import makeStore from './store/store';
 
 if (process.env.NODE_ENV !== 'test') {
-  import '../assets/style.css';
+  require('../assets/style.css');
 }
 
 const store = makeStore();
