@@ -1,9 +1,15 @@
 'use strict';
 
 import React from 'react';
-import Counter from './components/Counter';
+import App from './components/App';
+import { Provider } from 'react-redux';
+import makeStore from './store/store';
+
+const store = makeStore();
 
 React.render(
-  <Counter />,
+  <Provider store={store}>
+    {() => <App />}
+  </Provider>,
   document.getElementById('root')
 );

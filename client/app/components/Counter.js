@@ -8,8 +8,10 @@ export default React.createClass({
         <p>
           Counter {this.props.counter}
         </p>
-        <button onClick={this.props.increment}>+</button>
-        <button onClick={this.props.decrement}>-</button>
+        <button ref='increment'
+                onClick={this.props.increment}>+</button>
+        <button ref='decrement'
+                onClick={this.props.decrement}>-</button>
       </div>;
   }
 });
