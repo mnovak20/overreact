@@ -3,6 +3,9 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import path from 'path';
+import autoprefixer from 'autoprefixer';
+import lost from 'lost';
+import rucksack from 'rucksack-css';
 
 const productionConfig = {
   devtool: 'source-map',
@@ -11,10 +14,17 @@ const productionConfig = {
 
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel'
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader!postcss-loader'
     }]
+  },
+
+  postcss: function() {
+    return [rucksack, lost, autoprefixer];
   },
 
   output: {
@@ -42,7 +52,14 @@ const developmentConfig = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel'
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader!postcss-loader'
     }]
+  },
+
+  postcss: function() {
+    return [rucksack, lost, autoprefixer];
   },
 
   output: {
