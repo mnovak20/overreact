@@ -41,4 +41,5 @@ A fullstack Javascript boilerplate
 * ImmutableJS
 * Extract CSS for production
 * Webpack chunks
+* Add Undo/Redo React/Redux Devtool
 * Whats more?
