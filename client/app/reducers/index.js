@@ -1,10 +1,12 @@
 'use strict';
 
 import { combineReducers } from 'redux';
-import counter from './counter/counter';
+import filter from './filter/filter';
+import todo from './todo/todo';
 
 const reducers = combineReducers({
-  counter
+  filter: filter,
+  todo: todo
 });
 
 export default reducers;

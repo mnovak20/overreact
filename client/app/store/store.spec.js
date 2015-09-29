@@ -2,41 +2,59 @@
 
 import { expect } from 'chai';
 import makeStore from './store';
-import { increment, decrement } from '../actions/counter/counter';
+import { setVisibilityFilter } from '../actions/filter/filter';
+import { addTodo, completeTodo } from '../actions/todo/todo';
+import { SHOW_ALL, SHOW_COMPLETED } from '../constants/filter';
 
 describe('Store', () => {
+  let store, state;
+
+  beforeEach(() => {
+    store = makeStore();
+    state = store.getState();
+  });
+
   it('should start with an initial state', () => {
-    const store = makeStore();
-    const state = store.getState();
-
     expect(state).to.eql({
-      counter: 0
+      filter: SHOW_ALL,
+      todo: []
     });
   });
 
-  it('should increment', () => {
-    const store = makeStore();
-    const state = store.getState();
-
-    store.dispatch(increment());
-
+  it('should set a filter', () => {
+    store.dispatch(setVisibilityFilter(SHOW_COMPLETED));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
-      counter: 1
+      filter: SHOW_COMPLETED,
+      todo: []
     });
   });
 
-  it('should decrement', () => {
-    const store = makeStore();
-    const state = store.getState();
-
-    store.dispatch(decrement());
-
+  it('should add a todo', () => {
+    store.dispatch(addTodo('Making eggs'));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
-      counter: -1
+      filter: SHOW_ALL,
+      todo: [{
+        text: 'Making eggs',
+        completed: false
+      }]
+    });
+  });
+
+  it('should complete a todo', () => {
+    store.dispatch(addTodo('Making eggs'));
+    store.dispatch(completeTodo(0));
+    const nextState = store.getState();
+
+    expect(nextState).to.eql({
+      filter: SHOW_ALL,
+      todo: [{
+        text: 'Making eggs',
+        completed: true
+      }]
     });
   });
 });
