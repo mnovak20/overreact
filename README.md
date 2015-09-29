@@ -1,20 +1,41 @@
-Nodemon only watch server
+# Overreact
+A fullstack Javascript boilerplate
 
-   "jsdom": "^3.1.2",
-    "babel": "^5.8.23",
-    "babel-core": "^5.8.25",
-    "babel-loader": "^5.3.2",
-    "chai": "^3.3.0",
-    "react-redux": "^2.1.2",
-    "redux": "^3.0.0",
-    "express": "^4.13.3",
-    "http-proxy": "^1.11.2",
-    "mocha": "^2.3.3",
-    "mongoose": "^4.1.8",
-    "morgan": "^1.6.1",
-    "nodemon": "^1.7.1",
-    "react": "^0.13.3",
-    "react-router": "^0.13.3",
-    "supertest": "^1.1.0",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.0"
+### Technologies
+#### Backend
+* NodeJS
+* Express
+* MongoDB
+
+#### Frontend
+* React
+* Redux
+* PostCSS
+
+#### Testing
+* Mocha
+* Chai
+* JsDOM
+
+### How To
+1. Git clone
+2. `npm install`
+3. `npm run dev`
+
+### Scripts
+* Development `npm run dev`
+* Production `npm start`
+* Server Testing `npm run test:server`
+* Client Testing `npm run test:client`
+
+### Branches
+* Master => for boilerplate. `git checkout master`
+* Counter => Counter app example `git checkout counter`
+
+### Coming Features
+* CSSNext
+* Server side rendering
+* KoaJS to replace ExpressJS
+* More app examples
+* User authentication
+* Whats more?
