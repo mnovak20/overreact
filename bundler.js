@@ -38,6 +38,8 @@ const productionConfig = {
 };
 
 const developmentConfig = {
+  devtool: 'eval',
+
   entry: [
     // Hot reload
     'webpack-dev-server/client?http://localhost:8080',

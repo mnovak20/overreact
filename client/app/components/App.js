@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Counter from './Counter/Counter';
 import * as CounterActions from '../actions/counter/counter';
-import { increment, decrement } from '../actions/counter/counter';
+import { increment, decrement, incrementIfOdd, incrementAsync } from '../actions/counter/counter';
 
 function mapStateToProps(state) {
   return {
@@ -15,10 +15,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     increment: function() {
-      dispatch(increment())
+      dispatch(increment());
     },
     decrement: function() {
-      dispatch(decrement())
+      dispatch(decrement());
+    },
+    incrementIfOdd: function() {
+      dispatch(incrementIfOdd());
+    },
+    incrementAsync: function() {
+      dispatch(incrementAsync());
     }
   };
 }

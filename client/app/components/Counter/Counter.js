@@ -6,7 +6,7 @@ const Counter = React.createClass({
   mixin: [React.addons.PureRenderMixin],
 
   render: function() {
-    const { counter, increment, decrement } = this.props;
+    const { counter, increment, decrement, incrementIfOdd, incrementAsync } = this.props;
     return <section className="container">
         <div className="row">
           <div className="column counter">
@@ -23,12 +23,15 @@ const Counter = React.createClass({
                       onClick={decrement}>-</button>
             </div>
             <div className="mb5">
-              <button className="button">
+              <button className="button" ref="incrementIfOdd"
+                      onClick={incrementIfOdd}>
                 Increment if Odd
               </button>
             </div>
             <div className="mb5">
-              <button className="button">
+              <button className="button"
+                      ref="incrementAsync"
+                      onClick={incrementAsync}>
                 Increment Async
               </button>
             </div>
@@ -42,7 +45,9 @@ if (process.env.NODE_ENV !== 'test') {
   Counter.propTypes = {
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired
+    counter: PropTypes.number.isRequired,
+    incrementIfOdd: PropTypes.func.isRequired,
+    incrementAsync: PropTypes.func.isRequired
   };
 }
 

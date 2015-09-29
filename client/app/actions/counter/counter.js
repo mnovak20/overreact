@@ -22,6 +22,14 @@ export function incrementIfOdd() {
       return ;
     }
 
-    dispatch();
+    dispatch(increment());
   };
+}
+
+export function incrementAsync(delay = 1000) {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(increment());
+    }, delay);
+  }
 }

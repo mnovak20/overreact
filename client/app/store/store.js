@@ -1,8 +1,10 @@
 'use strict';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
 export default function makeStore() {
-  return createStore(reducers);
+  const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
+  return createStoreWithMiddleWare(reducers);
 };

@@ -38,4 +38,26 @@ describe('Counter', () => {
     Simulate.click(React.findDOMNode(component.refs.decrement));
     expect(decrementInvoked).to.equal(true);
   });
+
+  it('invokes the incrementIfOdd callback when Increment if Odd button is clicked', () => {
+    let incrementIfOddInvoked = false;
+    const incrementIfOdd = () => incrementIfOddInvoked = true;
+    const component = renderIntoDocument(
+      <Counter incrementIfOdd={incrementIfOdd} />
+    );
+
+    Simulate.click(React.findDOMNode(component.refs.incrementIfOdd));
+    expect(incrementIfOddInvoked).to.equal(true);
+  });
+
+  it('invokes the incrementAsync callback when Increment Async button is clicked', () => {
+    let incrementAsyncInvoked = false;
+    const incrementAsync = () => incrementAsyncInvoked = true;
+    const component = renderIntoDocument(
+      <Counter incrementAsync={incrementAsync} />
+    );
+
+    Simulate.click(React.findDOMNode(component.refs.incrementAsync));
+    expect(incrementAsyncInvoked).to.equal(true);
+  });
 });
