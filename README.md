@@ -34,8 +34,11 @@ A fullstack Javascript boilerplate
 
 ### Coming Features
 * CSSNext
-* Server side rendering
+* Server side rendering alongside Client side rendering
 * KoaJS to replace ExpressJS
 * More app examples
 * User authentication
+* ImmutableJS
+* Extract CSS for production
+* Webpack chunks
 * Whats more?
