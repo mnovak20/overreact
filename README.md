@@ -9,6 +9,7 @@ A fullstack Javascript boilerplate
 
 #### Frontend
 * React
+* Material UI
 * Redux
 * PostCSS
 * Lost
