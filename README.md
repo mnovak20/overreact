@@ -11,6 +11,9 @@ A fullstack Javascript boilerplate
 * React
 * Redux
 * PostCSS
+* Lost
+* Rucksack
+* PreCSS
 
 #### Testing
 * Mocha
@@ -33,7 +36,7 @@ A fullstack Javascript boilerplate
 * Counter => Counter app example `git checkout counter`
 
 ### Coming Features
-* CSSNext
+* CSSNext to replace PreCSS
 * Server side rendering alongside Client side rendering
 * KoaJS to replace ExpressJS
 * More app examples

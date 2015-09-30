@@ -6,6 +6,7 @@ import path from 'path';
 import autoprefixer from 'autoprefixer';
 import lost from 'lost';
 import rucksack from 'rucksack-css';
+import scss from 'precss';
 
 const productionConfig = {
   devtool: 'source-map',
@@ -24,7 +25,7 @@ const productionConfig = {
   },
 
   postcss: function() {
-    return [rucksack, lost, autoprefixer];
+    return [rucksack, lost, autoprefixer, scss];
   },
 
   output: {
@@ -61,7 +62,7 @@ const developmentConfig = {
   },
 
   postcss: function() {
-    return [rucksack, lost, autoprefixer];
+    return [rucksack, lost, autoprefixer, scss];
   },
 
   output: {

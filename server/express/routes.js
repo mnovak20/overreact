@@ -1,6 +1,7 @@
 'use strict';
 
 import { env } from '../config';
+import path from 'path';
 
 export default function(app) {
   app.use('/api/items', require('../api/item'));
