@@ -5,38 +5,39 @@ import React, { PropTypes } from 'react/addons';
 const Counter = React.createClass({
  mixin: [React.addons.PureRenderMixin],
 
+
  render: function() {
    const { counter, increment, decrement, incrementIfOdd, incrementAsync } = this.props;
-   return <section className="container">
-       <div className="row">
-         <div className="column counter">
-           <p>
-             Counter {counter}
-           </p>
-           <div className="mb5">
-             <button className="button"
-                     ref='increment'
-                     onClick={increment}>+</button>
-             {' '}
-             <button className="button"
-                     ref='decrement'
-                     onClick={decrement}>-</button>
-           </div>
-           <div className="mb5">
-             <button className="button" ref="incrementIfOdd"
-                     onClick={incrementIfOdd}>
-               Increment if Odd
-             </button>
-           </div>
-           <div className="mb5">
-             <button className="button"
-                     ref="incrementAsync"
-                     onClick={incrementAsync}>
-               Increment Async
-             </button>
-           </div>
+   return <section className="container-counter">
+      <div className="counter">
+        <div className="screen">
+          <h4>Counter: {counter} </h4>
+        </div>
+        <div className="body">
+          <div className="mb5">
+           <button className="button"
+                   ref='increment'
+                   onClick={increment}>+</button>
+           {' '}
+           <button className="button"
+                   ref='decrement'
+                   onClick={decrement}>-</button>
          </div>
-       </div>
+         <div className="mb5">
+           <button className="button" ref="incrementIfOdd"
+                   onClick={incrementIfOdd}>
+             Increment if Odd
+           </button>
+         </div>
+         <div className="mb5">
+           <button className="button"
+                   ref="incrementAsync"
+                   onClick={incrementAsync}>
+             Increment Async
+           </button>
+         </div>
+        </div>
+      </div>
      </section>;
  }
 });
