@@ -8,7 +8,7 @@ describe('Filter Action Creator', () => {
   it('should create an increment action', () => {
     expect(setVisibilityFilter(SHOW_ALL)).to.eql({
       type: SET_VISIBILITY_FILTER,
-      filtere: SHOW_ALL
+      filter: SHOW_ALL
     });
   });
 });

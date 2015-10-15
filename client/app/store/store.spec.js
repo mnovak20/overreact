@@ -2,8 +2,8 @@
 
 import { expect } from 'chai';
 import makeStore from './store';
-import { increment, decrement } from '../actions/counter/counter';
-import { INCREMENT, DECREMENT } from '../constants/counter';
+import { setVisibilityFilter } from '../actions/filter/filter';
+import { SET_VISIBILITY_FILTER, SHOW_ALL, SHOW_COMPLETED } from '../constants/filter';
 
 describe('Store', () => {
   let store, state;
@@ -15,25 +15,16 @@ describe('Store', () => {
 
   it('should start with an initial state', () => {
     expect(state).to.eql({
-      counter: 0
+      filter: SHOW_ALL
     });
   });
 
-  it('should increment', () => {
-    store.dispatch(increment());
+  it('should set a filter', () => {
+    store.dispatch(setVisibilityFilter(SHOW_COMPLETED));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
-      counter: 1
-    });
-  });
-
-  it('should decrement', () => {
-    store.dispatch(increment());
-    const nextState = store.getState();
-
-    expect(nextState).to.eql({
-      counter: 1
+      filter: SHOW_COMPLETED
     });
   });
 });
