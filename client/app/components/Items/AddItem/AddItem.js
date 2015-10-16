@@ -11,10 +11,12 @@ const AddItem = React.createClass({
     return <div>
       <input type="text" ref="item" onKeyPress={(e) => {
         if (e.keyCode === 13) {
-          addItem(this.value);
+          addItem(this.refs.item.value);
         }
       }}/>
-      <button ref="addItem" onClick={addItem}>Add Item</button>
+      <button ref="addItem" onClick={() => {
+        addItem(this.refs.item.value);
+      }}>Add Item</button>
     </div>;
   }
 });
@@ -22,10 +24,8 @@ const AddItem = React.createClass({
 if (process.env.NODE_ENV !== 'test') {
   require('./AddItem.css');
 
-  Filter.propTypes = {
-    addItem: PropTypes.func.isRequired,
-    completeItem: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired
+  AddItem.propTypes = {
+    addItem: PropTypes.func.isRequired
   };
 }
 
