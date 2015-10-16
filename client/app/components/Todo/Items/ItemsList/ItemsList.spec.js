@@ -30,6 +30,8 @@ describe('ItemsList Component', () => {
     expect(input.length).to.eql(2);
   });
 
+  it('renders the checkbox checked if item is completed');
+
   it('invokes the toggleCompleteItem callback when checkbox is checked', () => {
     const toggleCompleteItem = spy();
 

@@ -15,7 +15,6 @@ const ItemsList = React.createClass({
 
           <input ref={'input-' + i}
                  type="checkbox"
-                 name="item"
                  checked={item.completed}
                  onChange={() => {
                     toggleCompleteItem(item.text);

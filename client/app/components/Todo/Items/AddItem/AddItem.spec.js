@@ -42,4 +42,8 @@ describe('AddItem Component', () => {
     Simulate.keyDown(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
     expect(addItem).to.have.been.called.with('Make Eggs');
   });
+
+  it('reset the input box field after enter');
+
+  it('reset the input box field after add item button is clicked');
 });
