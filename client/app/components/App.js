@@ -1,39 +1,42 @@
-//'use strict';
-//
-//import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
-//import Counter from './Counter/Counter';
-//import * as CounterActions from '../actions/counter/counter';
-//import { increment, decrement, incrementAsync, incrementIfOdd } from '../actions/counter/counter';
-//
-//function mapStateToProps(state) {
-//  return {
-//    counter: state.counter
-//  };
-//}
-//
-//function mapDispatchToProps(dispatch) {
-//  return {
-//    increment: function() {
-//      dispatch(increment());
-//    },
-//    decrement: function() {
-//      dispatch(decrement());
-//    },
-//    incrementAsync: function(delay) {
-//      dispatch(incrementAsync(delay));
-//    },
-//    incrementIfOdd: function() {
-//      dispatch(incrementIfOdd());
-//    }
-//  };
-//}
-//
-///**
-// * Equivalent to above
-// * function mapDispatchToProps(dispatch) {;
-// *  return bindActionCreators(CounterActions, dispatch);
-// * }
-// */
-//
-//export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+'use strict';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as FilterActions from '../actions/filter/filter';
+import { setVisibilityFilter } from '../actions/filter/filter';
+import * as ItemsActions from '../actions/items/items';
+import { addItem, toggleCompleteItem, removeItem } from '../actions/items/items';
+import Todo from './Todo/Todo';
+
+function mapStateToProps(state) {
+  return {
+    filter: state.filter,
+    items: state.items
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setVisibilityFilter: function(filter) {
+      dispatch(setVisibilityFilter(filter));
+    },
+    addItem: function(text) {
+      dispatch(addItem(text));
+    },
+    toggleCompleteItem: function(item) {
+      dispatch(toggleCompleteItem(item));
+    },
+    removeItem: function(text) {
+      dispatch(removeItem(text));
+    }
+  };
+}
+
+/**
+ * Equivalent to above
+ * function mapDispatchToProps(dispatch) {;
+ *  return bindActionCreators(ItemsActions, dispatch);
+ * }
+ */
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

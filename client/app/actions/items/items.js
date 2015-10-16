@@ -1,6 +1,6 @@
 'use strict';
 
-import { ADD_ITEM, COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
+import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
 
 export function addItem(text) {
   return {
@@ -9,9 +9,9 @@ export function addItem(text) {
   };
 }
 
-export function completeItem(text) {
+export function toggleCompleteItem(text) {
   return {
-    type: COMPLETE_ITEM,
+    type: TOGGLE_COMPLETE_ITEM,
     text: text
   };
 }

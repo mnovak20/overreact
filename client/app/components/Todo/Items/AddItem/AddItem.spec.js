@@ -39,7 +39,7 @@ describe('AddItem Component', () => {
     );
 
     component.refs.item.value = 'Make Eggs';
-    Simulate.keyPress(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
+    Simulate.keyDown(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
     expect(addItem).to.have.been.called.with('Make Eggs');
   });
 });

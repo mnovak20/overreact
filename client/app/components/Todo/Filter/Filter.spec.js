@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate } from 'react-addons-test-utils';
 import { expect } from 'chai';
 import Filter from './Filter';
-import { SHOW_ALL, SHOW_COMPLETED } from '../../constants/filter';
+import { SHOW_ALL, SHOW_COMPLETED } from '../../../constants/filter';
 
 
 describe('Filter Component', () => {

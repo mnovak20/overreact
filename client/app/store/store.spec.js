@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import makeStore from './store';
 import { setVisibilityFilter } from '../actions/filter/filter';
 import { SET_VISIBILITY_FILTER, SHOW_ALL, SHOW_COMPLETED } from '../constants/filter';
-import { addItem, removeItem, completeItem } from '../actions/items/items';
+import { addItem, removeItem, toggleCompleteItem } from '../actions/items/items';
 
 describe('Store', () => {
   let store, state;
@@ -46,7 +46,7 @@ describe('Store', () => {
 
   it('should complete an item', () => {
     store.dispatch(addItem("Make Eggs"));
-    store.dispatch(completeItem("Make Eggs"));
+    store.dispatch(toggleCompleteItem("Make Eggs"));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
@@ -54,6 +54,21 @@ describe('Store', () => {
       items: [{
         text: "Make Eggs",
         completed: true
+      }]
+    });
+  });
+
+  it('should incomplete an item', () => {
+    store.dispatch(addItem("Make Eggs"));
+    store.dispatch(toggleCompleteItem("Make Eggs"));
+    store.dispatch(toggleCompleteItem("Make Eggs"));
+    const nextState = store.getState();
+
+    expect(nextState).to.eql({
+      filter: SHOW_ALL,
+      items: [{
+        text: "Make Eggs",
+        completed: false
       }]
     });
   });

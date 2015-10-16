@@ -1,7 +1,7 @@
 'use strict';
 
 import { expect } from 'chai';
-import { ADD_ITEM, REMOVE_ITEM, COMPLETE_ITEM } from '../../constants/items';
+import { ADD_ITEM, REMOVE_ITEM, TOGGLE_COMPLETE_ITEM } from '../../constants/items';
 import items from './items';
 
 describe('Items Reducer', () => {
@@ -33,7 +33,7 @@ describe('Items Reducer', () => {
     }];
 
     const nextState = items(state, {
-      type: COMPLETE_ITEM,
+      type: TOGGLE_COMPLETE_ITEM,
       text: "Buy Milk"
     });
 
@@ -43,6 +43,34 @@ describe('Items Reducer', () => {
     }, {
       text: "Buy Milk",
       completed: true
+    }]);
+  });
+
+  it('should incomplete an item', () => {
+    const state = [{
+      text: 'Make Eggs',
+      completed: true
+    }, {
+      text: "Buy Milk",
+      completed: false
+    }];
+
+    const nextStateOne = items(state, {
+      type: TOGGLE_COMPLETE_ITEM,
+      text: "Buy Milk"
+    });
+
+    const nextStateTwo = items(nextStateOne, {
+      type: TOGGLE_COMPLETE_ITEM,
+      text: "Buy Milk"
+    });
+
+    expect(nextStateTwo).to.eql([{
+      text: 'Make Eggs',
+      completed: true
+    }, {
+      text: "Buy Milk",
+      completed: false
     }]);
   });
 

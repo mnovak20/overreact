@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
-import { ADD_ITEM, COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
+import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
 
 export default function items(state = [], action) {
   let index;
@@ -15,7 +15,7 @@ export default function items(state = [], action) {
         }
       ];
 
-    case COMPLETE_ITEM:
+    case TOGGLE_COMPLETE_ITEM:
       index = _.findIndex(state, function(item) {
         return item.text === action.text;
       });
@@ -23,7 +23,7 @@ export default function items(state = [], action) {
       return [
         ...state.slice(0, index),
         Object.assign({}, state[index], {
-          completed: true
+          completed: state[index].completed ? false : true
         }),
         ...state.slice(index + 1)
       ];

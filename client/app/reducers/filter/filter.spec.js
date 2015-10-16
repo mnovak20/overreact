@@ -9,7 +9,7 @@ describe('Filter Reducer', () => {
     expect(filter(undefined, {})).to.eql(SHOW_ALL);
   });
 
-  it('should set a filterfilter', () => {
+  it('should set a filter', () => {
     const state = SHOW_ALL;
 
     const nextState = filter(state, {
