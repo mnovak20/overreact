@@ -9,12 +9,12 @@ const AddItem = React.createClass({
   render: function() {
     const { addItem } = this.props;
     return <div>
-      <input type="text" onKeyPress={(e) => {
+      <input type="text" ref="item" onKeyPress={(e) => {
         if (e.keyCode === 13) {
           addItem(this.value);
         }
       }}/>
-      <button onClick={addItem}>Add Item</button>
+      <button ref="addItem" onClick={addItem}>Add Item</button>
     </div>;
   }
 });

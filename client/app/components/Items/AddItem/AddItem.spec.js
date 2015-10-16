@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate } from 'react-addons-test-utils';
-import { expect } from 'chai';
+import { expect, spy } from 'chai';
 import AddItem from './AddItem';
 
 describe('AddItem Component', () => {
@@ -27,8 +27,19 @@ describe('AddItem Component', () => {
       <AddItem addItem={addItem} />
     );
 
-    console.log(ReactDOM.findDOMNode(component, 'button'))
-    Simulate.click(ReactDOM.findDOMNode(component, 'button'));
+    Simulate.click(ReactDOM.findDOMNode(component.refs.addItem));
+    expect(addItemInvoked).to.equal(true);
+  });
+
+  it('invokes the addItem callback when an enter keyboard is pressed', () => {
+    let addItemInvoked = false;
+    const addItem = () => addItemInvoked = true;
+
+    const component = renderIntoDocument(
+      <AddItem addItem={addItem} />
+    );
+
+    Simulate.keyPress(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
     expect(addItemInvoked).to.equal(true);
   });
 });
