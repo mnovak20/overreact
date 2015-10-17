@@ -2,7 +2,7 @@
 
 import path from 'path';
 
-export const env = {
+export default {
   nodeEnv: process.env.NODE_ENV,
 
   port: process.env.PORT || 3000,
@@ -13,5 +13,7 @@ export const env = {
 
   mongo: {
     uri: 'mongodb://localhost/overreact'
-  }
+  },
+
+  seedDB: true
 };
