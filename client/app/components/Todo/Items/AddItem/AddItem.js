@@ -15,12 +15,17 @@ const AddItem = React.createClass({
 
   render: function() {
     return <div>
-      <input type="text" ref="item" onKeyDown={(e) => {
+      <input className="input"
+             type="text"
+             ref="item"
+             onKeyDown={(e) => {
         if (e.keyCode === 13) {
           this.handleSubmit();
         }
       }}/>
-      <button ref="addItem" onClick={this.handleSubmit}>Add Item</button>
+      <button className="button"
+              ref="addItem"
+              onClick={this.handleSubmit}>Add Item</button>
     </div>;
   }
 });

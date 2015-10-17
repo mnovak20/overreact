@@ -9,7 +9,8 @@ const Filter = React.createClass({
 
   render: function() {
     const { setVisibilityFilter } = this.props;
-    return <select onChange={(e) => {
+    return <select className="filter"
+                   onChange={(e) => {
       setVisibilityFilter(e.target.value);
     }}>
       <option value={SHOW_ALL}>Show All</option>

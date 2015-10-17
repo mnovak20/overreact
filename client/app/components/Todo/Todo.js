@@ -17,10 +17,15 @@ const Todo = React.createClass({
 
       return true;
     });
-    return <div>
-      <Filter {...this.props}/>
-      <Items {...this.props} items={items}/>
-    </div>;
+    return <div className="container">
+        <div className="column">
+          <div className="todo">
+            <h1>Todo</h1>
+            <Filter {...this.props}/>
+            <Items {...this.props} items={items}/>
+          </div>
+        </div>
+      </div>
   }
 });
 

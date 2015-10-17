@@ -10,20 +10,22 @@ const ItemsList = React.createClass({
     const { items, removeItem, toggleCompleteItem } = this.props;
     return <ul>
       {items.map((item, i) => {
-        return <li key={i}>
-          {item.text}
+        return <li className="item" key={i}>
+          <div className="text">{item.text}</div>
 
-          <input ref={'input-' + i}
+          <input className="checkbox"
+                 ref={'input-' + i}
                  type="checkbox"
                  checked={item.completed}
                  onChange={() => {
                     toggleCompleteItem(item.text);
                  }}/>
 
-          <button ref={'button-' + i}
+          <button className="button"
+                  ref={'button-' + i}
                   onClick={() => {
                     removeItem(item.text);
-                  }}>Remove</button>
+                  }}>x</button>
         </li>;
       })}
     </ul>;
