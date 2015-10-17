@@ -6,17 +6,21 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 const AddItem = React.createClass({
   mixin: [PureRenderMixin],
 
+  handleSubmit: function() {
+    if (this.refs.item.value) {
+      this.props.addItem(this.refs.item.value);
+      this.refs.item.value = '';
+    }
+  },
+
   render: function() {
-    const { addItem } = this.props;
     return <div>
       <input type="text" ref="item" onKeyDown={(e) => {
         if (e.keyCode === 13) {
-          addItem(this.refs.item.value);
+          this.handleSubmit();
         }
       }}/>
-      <button ref="addItem" onClick={() => {
-        addItem(this.refs.item.value);
-      }}>Add Item</button>
+      <button ref="addItem" onClick={this.handleSubmit}>Add Item</button>
     </div>;
   }
 });

@@ -30,7 +30,25 @@ describe('ItemsList Component', () => {
     expect(input.length).to.eql(2);
   });
 
-  it('renders the checkbox checked if item is completed');
+  it('renders the checkbox checked if item is completed', () => {
+    const items = [{
+      text: 'Make Eggs',
+      completed: false
+    }, {
+      text: 'Buy Milk',
+      completed: true
+    }];
+
+    const component = renderIntoDocument(
+      <ItemsList items={items}/>
+    );
+
+    const incompleteCheckBox = ReactDOM.findDOMNode(component.refs['input-0']);
+    const completeCheckBox = ReactDOM.findDOMNode(component.refs['input-1']);
+
+    expect(incompleteCheckBox.checked).to.equal(false);
+    expect(completeCheckBox.checked).to.equal(true);
+  });
 
   it('invokes the toggleCompleteItem callback when checkbox is checked', () => {
     const toggleCompleteItem = spy();
@@ -44,11 +62,8 @@ describe('ItemsList Component', () => {
       <ItemsList items={items} toggleCompleteItem={toggleCompleteItem} />
     );
 
-    Simulate.change(ReactDOM.findDOMNode(component.refs['input-0']));
-    expect(toggleCompleteItem).to.have.been.called.with({
-      text: 'Make Eggs',
-      completed: false
-    });
+    Simulate.change(ReactDOM.findDOMNode(component.refs['input-0']), { "target" : { "checked": true } });
+    expect(toggleCompleteItem).to.have.been.called.with('Make Eggs');
   });
 
   it('invokes the removeItem callback when button is clicked', () => {
@@ -64,9 +79,6 @@ describe('ItemsList Component', () => {
     );
 
     Simulate.click(ReactDOM.findDOMNode(component.refs['button-0']));
-    expect(removeItem).to.have.been.called.with({
-      text: 'Make Eggs',
-      completed: false
-    });
+    expect(removeItem).to.have.been.called.with('Make Eggs');
   });
 });
