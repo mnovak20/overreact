@@ -3,13 +3,13 @@
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
-import { env } from '../config';
+import { nodeEnv, root, port, webpackPort } from '../config';
 import httpProxy from 'http-proxy';
 import routes from './routes';
 
 const app = express();
 
-if (env.nodeEnv === 'development') {
+if (nodeEnv === 'development') {
   app.use(morgan('dev'));
 
   /**
@@ -19,21 +19,21 @@ if (env.nodeEnv === 'development') {
 
   app.all('/build/*', function (req, res) {
     proxy.web(req, res, {
-      target: `http://localhost:${env.webpackPort}`
+      target: `http://localhost:${webpackPort}`
     });
   });
 }
 
-if (env.nodeEnv === 'production') {
+if (nodeEnv === 'production') {
   app.use(morgan('combined'));
 }
 
-app.use(express.static(path.join(env.root, 'client')));
+app.use(express.static(path.join(root, 'client')));
 
 routes(app);
 
-app.listen(env.port, () => {
-  console.log(`Server is listening on port ${env.port}`);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
 
 export default app;
