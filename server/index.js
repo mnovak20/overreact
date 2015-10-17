@@ -2,9 +2,13 @@
 
 import mongoose from 'mongoose';
 import app from './express';
-import { env } from './config';
+import { seedDB, mongo } from './config';
 
 // Connect to database
-mongoose.connect(env.mongo.uri);
+mongoose.connect(mongo.uri);
+
+if (seedDB) {
+  require('./config/seed')();
+}
 
 export default app;

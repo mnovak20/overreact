@@ -1,12 +1,12 @@
 'use strict';
 
-import { env } from '../config';
+import { root } from '../config';
 import path from 'path';
 
 export default function(app) {
   app.use('/api/items', require('../api/item'));
 
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(env.root, '/client/index.html'));
+    res.sendFile(path.join(root, '/client/index.html'));
   });
 }
