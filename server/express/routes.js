@@ -1,6 +1,6 @@
 'use strict';
 
-import { root } from '../config';
+import { root } from '../config/environment';
 import path from 'path';
 
 export default function(app) {

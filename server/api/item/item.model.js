@@ -2,11 +2,9 @@
 
 import mongoose, { Schema } from 'mongoose';
 
-mongoose.Promise = Promise;
-
 const ItemSchema = new Schema({
-  title: String,
-  description: String
+  text: String,
+  completed: { type: Boolean, default: false }
 });
 
 export default mongoose.model('Item', ItemSchema);
