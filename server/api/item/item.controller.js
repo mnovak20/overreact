@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'lodash';
 import Item from './item.model';
 
 export function index(req, res, next) {
@@ -22,7 +23,7 @@ export function show(req, res, next) {
 
 export function create(req, res, next) {
   Item
-    .create(req.body).exec()
+    .create(req.body)
     .then(item => {
       res.status(201).send(item);
     })
@@ -31,7 +32,11 @@ export function create(req, res, next) {
 
 export function update(req, res, next) {
   Item
-    .findByIdAndUpdate(req.params.id, req.body).exec()
+    .findById(req.params.id).exec()
+    .then(item => {
+      const updated = _.merge(item, req.body);
+      return updated.save();
+    })
     .then(item => {
       res.status(201).send(item);
     })

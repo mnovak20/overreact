@@ -3,7 +3,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
-import { nodeEnv, root, port, webpackPort } from '../config';
+import bodyParser from 'body-parser';
+import { nodeEnv, root, port, webpackPort } from '../config/environment';
 import httpProxy from 'http-proxy';
 import routes from './routes';
 
@@ -28,6 +29,7 @@ if (nodeEnv === 'production') {
   app.use(morgan('combined'));
 }
 
+app.use(bodyParser.json());
 app.use(express.static(path.join(root, 'client')));
 
 routes(app);
