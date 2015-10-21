@@ -10,7 +10,7 @@ const all = {
 
   webpackPort: 8080,
 
-  root: path.normalize(__dirname + '../../..')
+  root: path.normalize(__dirname + '../../../..')
 };
 
 export default _.merge(all,
