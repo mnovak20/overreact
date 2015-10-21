@@ -1,11 +1,22 @@
 'use strict';
 
-import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, FETCH_ITEMS } from '../../constants/items';
+import fetch from 'isomorphic-fetch';
+import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, RECEIVED_ITEMS } from '../../constants/items';
 
 export function fetchItems() {
-  return {
-    type: FETCH_ITEMS
+  return (dispatch, getState) => {
+    fetch('/api/items')
+      .then(function(response) {
+        dispatch(receivedItems(items));
+      });
   };
+}
+
+export function receivedItems(items) {
+  return {
+    type: RECEIVED_ITEMS,
+    items: items
+  }
 }
 
 export function addItem(text) {

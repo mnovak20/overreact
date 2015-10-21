@@ -10,6 +10,7 @@ const Todo = React.createClass({
   mixin: [PureRenderMixin],
 
   componentDidMount: function() {
+    this.props
     console.log("testting")
   },
 

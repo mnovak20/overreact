@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as FilterActions from '../actions/filter/filter';
 import { setVisibilityFilter } from '../actions/filter/filter';
 import * as ItemsActions from '../actions/items/items';
-import { addItem, toggleCompleteItem, removeItem } from '../actions/items/items';
+import { addItem, toggleCompleteItem, removeItem, fetchItems } from '../actions/items/items';
 import Todo from './Todo/Todo';
 
 function mapStateToProps(state) {
@@ -28,6 +28,9 @@ function mapDispatchToProps(dispatch) {
     },
     removeItem: function(text) {
       dispatch(removeItem(text));
+    },
+    fetchItems: function() {
+      dispatch(fetchItems());
     }
   };
 }

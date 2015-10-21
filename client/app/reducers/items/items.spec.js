@@ -1,7 +1,7 @@
 'use strict';
 
 import { expect } from 'chai';
-import { ADD_ITEM, REMOVE_ITEM, TOGGLE_COMPLETE_ITEM } from '../../constants/items';
+import { ADD_ITEM, REMOVE_ITEM, TOGGLE_COMPLETE_ITEM, RECEIVED_ITEMS } from '../../constants/items';
 import items from './items';
 
 describe('Items Reducer', () => {
@@ -98,5 +98,25 @@ describe('Items Reducer', () => {
       text: "Get Water",
       completed: true
     }]);
+  });
+
+  it('should received items', () => {
+    const list = [{
+      text: 'Make Eggs',
+      completed: true
+    }, {
+      text: "Buy Milk",
+      completed: false
+    }, {
+      text: "Get Water",
+      completed: true
+    }];
+
+    const nextState = items(undefined, {
+      type: RECEIVED_ITEMS,
+      items: list
+    });
+
+    expect(nextState).to.eql(list);
   });
 });
