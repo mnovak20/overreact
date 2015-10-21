@@ -13,7 +13,7 @@ mongoose.Promise = bluebird;
 Promise = bluebird;
 
 if (seedDB) {
-  require('./config/environment/seed')();
+  require('./config/seed')();
 }
 
 export default app;
