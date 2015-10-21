@@ -1,8 +1,8 @@
 'use strict';
 
 import { expect, spy } from 'chai';
-import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
-import { addItem, toggleCompleteItem, removeItem } from './items';
+import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, FETCH_ITEMS } from '../../constants/items';
+import { addItem, toggleCompleteItem, removeItem, fetchItems } from './items';
 
 describe('Items Action Creator', () => {
   it('should create an add item action', () => {
@@ -23,6 +23,12 @@ describe('Items Action Creator', () => {
     expect(removeItem("Make Eggs")).to.eql({
       type: REMOVE_ITEM,
       text: "Make Eggs"
+    });
+  });
+
+  it('should create a fetch items action', () => {
+    expect(fetchItems()).to.eql({
+      type: FETCH_ITEMS
     });
   });
 });

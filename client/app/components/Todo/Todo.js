@@ -9,6 +9,10 @@ import { SHOW_ALL, SHOW_COMPLETED } from '../../constants/filter';
 const Todo = React.createClass({
   mixin: [PureRenderMixin],
 
+  componentDidMount: function() {
+    console.log("testting")
+  },
+
   render: function() {
     const items = this.props.items.filter((item) => {
       if (this.props.filter === SHOW_COMPLETED) {

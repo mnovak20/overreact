@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
-import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM } from '../../constants/items';
+import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, FETCH_ITEMS } from '../../constants/items';
 
 export default function items(state = [], action) {
   let index;
@@ -36,6 +36,9 @@ export default function items(state = [], action) {
       return [...state.slice(0, index),
         ...state.slice(index + 1)
       ];
+
+    case FETCH_ITEMS:
+
 
     default:
       return state;
