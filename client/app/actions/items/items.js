@@ -1,13 +1,13 @@
 'use strict';
 
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, RECEIVED_ITEMS } from '../../constants/items';
 
 export function fetchItems() {
   return (dispatch, getState) => {
-    fetch('/api/items')
+    axios.get('/api/items')
       .then(function(response) {
-        dispatch(receivedItems(items));
+        dispatch(receivedItems(response.data));
       });
   };
 }
