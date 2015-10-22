@@ -4,7 +4,12 @@ import { expect } from 'chai';
 import makeStore from './store';
 import { setVisibilityFilter } from '../actions/filter/filter';
 import { SET_VISIBILITY_FILTER, SHOW_ALL, SHOW_COMPLETED } from '../constants/filter';
-import { addItem, removeItem, toggleCompleteItem } from '../actions/items/items';
+import {
+  addedItem,
+  updatedItem,
+  removedItem,
+  receivedItems
+} from '../actions/items/items';
 
 describe('Store', () => {
   let store, state;
@@ -32,55 +37,71 @@ describe('Store', () => {
   });
 
   it('should add an item', () => {
-    store.dispatch(addItem("Make Eggs"));
+    const item = {
+      _id: '123',
+      text: 'Make Eggs',
+      completed: false
+    };
+    store.dispatch(addedItem(item));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
       filter: SHOW_ALL,
-      items: [{
-        text: "Make Eggs",
-        completed: false
-      }]
+      items: [item]
     });
   });
 
-  it('should complete an item', () => {
-    store.dispatch(addItem("Make Eggs"));
-    store.dispatch(toggleCompleteItem("Make Eggs"));
+  it('should update an item', () => {
+    const itemOne = {
+      _id: '123',
+      text: 'Make Eggs',
+      completed: false
+    };
+
+    const itemTwo = {
+      _id: '456',
+      text: 'Buy Milk',
+      completed: false
+    };
+
+    const updatedItemOne = {
+      _id: '123',
+      text: 'Make Eggs',
+      completed: true
+    };
+
+    store.dispatch(addedItem(itemOne));
+    store.dispatch(addedItem(itemTwo));
+    store.dispatch(updatedItem(updatedItemOne));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
       filter: SHOW_ALL,
-      items: [{
-        text: "Make Eggs",
-        completed: true
-      }]
-    });
-  });
-
-  it('should incomplete an item', () => {
-    store.dispatch(addItem("Make Eggs"));
-    store.dispatch(toggleCompleteItem("Make Eggs"));
-    store.dispatch(toggleCompleteItem("Make Eggs"));
-    const nextState = store.getState();
-
-    expect(nextState).to.eql({
-      filter: SHOW_ALL,
-      items: [{
-        text: "Make Eggs",
-        completed: false
-      }]
+      items: [updatedItemOne, itemTwo]
     });
   });
 
   it('should remove an item', () => {
-    store.dispatch(addItem("Make Eggs"));
-    store.dispatch(removeItem("Make Eggs"));
+    const itemOne = {
+      _id: '123',
+      text: 'Make Eggs',
+      completed: false
+    };
+
+    const itemTwo = {
+      _id: '456',
+      text: 'Buy Milk',
+      completed: false
+    };
+
+    store.dispatch(addedItem(itemOne));
+    store.dispatch(addedItem(itemTwo));
+    store.dispatch(removedItem(itemTwo));
     const nextState = store.getState();
 
     expect(nextState).to.eql({
       filter: SHOW_ALL,
-      items: []
+      items: [itemOne]
     });
   });
 });

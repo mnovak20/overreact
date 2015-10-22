@@ -1,9 +1,18 @@
 'use strict';
 
 import axios from 'axios';
-import { ADD_ITEM, TOGGLE_COMPLETE_ITEM, REMOVE_ITEM, RECEIVED_ITEMS } from '../../constants/items';
+import {
+  RECEIVING_ITEMS,
+  RECEIVED_ITEMS,
+  ADDING_ITEM,
+  ADDED_ITEM,
+  UPDATING_ITEM,
+  UPDATED_ITEM,
+  REMOVING_ITEM,
+  REMOVED_ITEM
+} from '../../constants/items';
 
-export function fetchItems() {
+export function receivingItems() {
   return (dispatch, getState) => {
     axios.get('/api/items')
       .then(function(response) {
@@ -19,24 +28,51 @@ export function receivedItems(items) {
   }
 }
 
-export function addItem(text) {
-  return {
-    type: ADD_ITEM,
-    text: text
+export function addingItem(item) {
+  return (dispatch, getState) => {
+    axios.post('/api/items', item)
+      .then(function(response) {
+        dispatch(addedItem(response.data));
+      });
   };
 }
 
-export function toggleCompleteItem(text) {
+export function addedItem(item) {
   return {
-    type: TOGGLE_COMPLETE_ITEM,
-    text: text
+    type: ADDED_ITEM,
+    item: item
+  }
+}
+
+export function updatingItem(item) {
+  return (dispatch, getState) => {
+    axios.put(`/api/items/${item._id}`, item)
+      .then(function(response) {
+        dispatch(updatedItem(response.data));
+      });
   };
 }
 
-export function removeItem(text) {
+export function updatedItem(item) {
   return {
-    type: REMOVE_ITEM,
-    text: text
+    type: UPDATED_ITEM,
+    item: item
+  }
+}
+
+export function removingItem(item) {
+  return (dispatch, getState) => {
+    axios.delete(`/api/items/${item._id}`)
+      .then(function(response) {
+        dispatch(removedItem(response.data));
+      });
+  };
+}
+
+export function removedItem(item) {
+  return {
+    type: REMOVED_ITEM,
+    item: item
   };
 }
 
