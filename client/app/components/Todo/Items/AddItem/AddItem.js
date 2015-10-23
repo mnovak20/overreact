@@ -8,7 +8,7 @@ const AddItem = React.createClass({
 
   handleSubmit: function() {
     if (this.refs.item.value) {
-      this.props.addItem(this.refs.item.value);
+      this.props.addingItem({ text: this.refs.item.value });
       this.refs.item.value = '';
     }
   },
@@ -24,7 +24,7 @@ const AddItem = React.createClass({
         }
       }}/>
       <button className="button"
-              ref="addItem"
+              ref="addingItem"
               onClick={this.handleSubmit}>Add Item</button>
     </div>;
   }
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'test') {
   require('./AddItem.css');
 
   AddItem.propTypes = {
-    addItem: PropTypes.func.isRequired
+    addingItem: PropTypes.func.isRequired
   };
 }
 

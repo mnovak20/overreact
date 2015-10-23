@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as FilterActions from '../actions/filter/filter';
 import { setVisibilityFilter } from '../actions/filter/filter';
 import * as ItemsActions from '../actions/items/items';
-import { addItem, toggleCompleteItem, removeItem, getItems } from '../actions/items/items';
+import { addingItem, updatingItem, removingItem, receivingItems } from '../actions/items/items';
 import Todo from './Todo/Todo';
 
 function mapStateToProps(state) {
@@ -20,17 +20,17 @@ function mapDispatchToProps(dispatch) {
     setVisibilityFilter: function(filter) {
       dispatch(setVisibilityFilter(filter));
     },
-    addItem: function(text) {
-      dispatch(addItem(text));
+    addingItem: function({ text }) {
+      dispatch(addingItem({ text }));
     },
-    toggleCompleteItem: function(item) {
-      dispatch(toggleCompleteItem(item));
+    updatingItem: function(item) {
+      dispatch(updatingItem(item));
     },
-    removeItem: function(text) {
-      dispatch(removeItem(text));
+    removingItem: function(item) {
+      dispatch(removingItem(item));
     },
-    getItems: function() {
-      dispatch(getItems());
+    receivingItems: function() {
+      dispatch(receivingItems());
     }
   };
 }

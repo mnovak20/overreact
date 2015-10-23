@@ -10,8 +10,7 @@ const Todo = React.createClass({
   mixin: [PureRenderMixin],
 
   componentDidMount: function() {
-    this.props.getItems();
-    console.log("testting")
+    this.props.receivingItems();
   },
 
   render: function() {
@@ -40,9 +39,10 @@ if (process.env.NODE_ENV !== 'test') {
   Todo.propTypes = {
     filter: PropTypes.string.isRequired,
     items: PropTypes.array.isRequired,
-    addItem: PropTypes.func.isRequired,
-    toggleCompleteItem: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired
+    addingItem: PropTypes.func.isRequired,
+    updatingItem: PropTypes.func.isRequired,
+    removingItem: PropTypes.func.isRequired,
+    receivingItems: PropTypes.func.isRequired
   };
 }
 

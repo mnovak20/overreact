@@ -7,7 +7,7 @@ const ItemsList = React.createClass({
   mixin: [PureRenderMixin],
 
   render: function() {
-    const { items, removeItem, toggleCompleteItem } = this.props;
+    const { items, removingItem, updatingItem } = this.props;
     return <ul>
       {items.map((item, i) => {
         return <li className="item" key={i}>
@@ -18,13 +18,13 @@ const ItemsList = React.createClass({
                  type="checkbox"
                  checked={item.completed}
                  onChange={() => {
-                    toggleCompleteItem(item.text);
+                    updatingItem(item);
                  }}/>
 
           <button className="button"
                   ref={'button-' + i}
                   onClick={() => {
-                    removeItem(item.text);
+                    removingItem(item);
                   }}>x</button>
         </li>;
       })}
@@ -36,8 +36,8 @@ if (process.env.NODE_ENV !== 'test') {
   require('./ItemsList.css');
 
   ItemsList.propTypes = {
-    toggleCompleteItem: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired,
+    updatingItem: PropTypes.func.isRequired,
+    removingItem: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired
   };
 }

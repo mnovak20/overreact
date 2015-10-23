@@ -21,8 +21,8 @@ if (process.env.NODE_ENV !== 'test') {
 
   Items.propTypes = {
     items: PropTypes.array.isRequired,
-    toggleCompleteItem: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired
+    updatingItem: PropTypes.func.isRequired,
+    removingItem: PropTypes.func.isRequired
   };
 }
 

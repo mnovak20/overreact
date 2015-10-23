@@ -20,56 +20,56 @@ describe('AddItem Component', () => {
   });
 
   it('should not invoke the callback if the input box is empty when button is clicked', () => {
-    const addItem = spy();
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem} />
+      <AddItem addingItem={addingItem} />
     );
 
-    Simulate.click(ReactDOM.findDOMNode(component.refs.addItem));
-    expect(addItem).to.not.have.been.called.with('Make Eggs');
+    Simulate.click(ReactDOM.findDOMNode(component.refs.addingItem));
+    expect(addingItem).to.not.have.been.called.with({ text: 'Make Eggs' });
   });
 
   it('should not invoke the callback if the input box is empty when enter is pressed', () => {
-    const addItem = spy();
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem} />
+      <AddItem addingItem={addingItem} />
     );
 
     Simulate.keyDown(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
-    expect(addItem).to.not.have.been.called.with('Make Eggs');
+    expect(addingItem).to.not.have.been.called.with({ text: 'Make Eggs' });
   });
 
-  it('invokes the addItem callback when button is clicked', () => {
-    const addItem = spy();
+  it('invokes the addingItem callback when button is clicked', () => {
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem} />
+      <AddItem addingItem={addingItem} />
     );
 
     component.refs.item.value = 'Make Eggs';
-    Simulate.click(ReactDOM.findDOMNode(component.refs.addItem));
-    expect(addItem).to.have.been.called.with('Make Eggs');
+    Simulate.click(ReactDOM.findDOMNode(component.refs.addingItem));
+    expect(addingItem).to.have.been.called.with({ text: 'Make Eggs' });
   });
 
-  it('invokes the addItem callback when an enter keyboard is pressed', () => {
-    const addItem = spy();
+  it('invokes the addingItem callback when an enter keyboard is pressed', () => {
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem} />
+      <AddItem addingItem={addingItem} />
     );
 
     component.refs.item.value = 'Make Eggs';
     Simulate.keyDown(ReactDOM.findDOMNode(component.refs.item), { keyCode: 13 });
-    expect(addItem).to.have.been.called.with('Make Eggs');
+    expect(addingItem).to.have.been.called.with({ text: 'Make Eggs' });
   });
 
   it('reset the input box field after enter', () => {
-    const addItem = spy();
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem}/>
+      <AddItem addingItem={addingItem}/>
     );
 
     component.refs.item.value = 'Make Eggs';
@@ -78,14 +78,14 @@ describe('AddItem Component', () => {
   });
 
   it('reset the input box field after add item button is clicked', () => {
-    const addItem = spy();
+    const addingItem = spy();
 
     const component = renderIntoDocument(
-      <AddItem addItem={addItem} />
+      <AddItem addingItem={addingItem} />
     );
 
     component.refs.item.value = 'Make Eggs';
-    Simulate.click(ReactDOM.findDOMNode(component.refs.addItem));
+    Simulate.click(ReactDOM.findDOMNode(component.refs.addingItem));
     expect(component.refs.item.value).to.equal('');
   });
 });
