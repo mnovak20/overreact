@@ -6,8 +6,13 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 const ItemsList = React.createClass({
   mixin: [PureRenderMixin],
 
+  handleUpdate: function(item) {
+    item.completed = !item.completed;
+    this.props.updatingItem(item);
+  },
+
   render: function() {
-    const { items, removingItem, updatingItem } = this.props;
+    const { items, removingItem } = this.props;
     return <ul>
       {items.map((item, i) => {
         return <li className="item" key={i}>
@@ -17,9 +22,7 @@ const ItemsList = React.createClass({
                  ref={'input-' + i}
                  type="checkbox"
                  checked={item.completed}
-                 onChange={() => {
-                    updatingItem(item);
-                 }}/>
+                 onChange={this.handleUpdate.bind(null, item)}/>
 
           <button className="button"
                   ref={'button-' + i}
