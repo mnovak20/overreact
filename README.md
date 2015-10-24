@@ -35,6 +35,8 @@ A fullstack Javascript boilerplate
 ### Branches
 * Master => for boilerplate. `git checkout master`
 * Counter => Counter app example `git checkout counter`
+* Todo => Todo app example `git checkout todo`
+* Todo with REST API => Todo with REST backend `git checkout todo-rest-api`
 
 ### Coming Features
 * CSSNext to replace PreCSS
